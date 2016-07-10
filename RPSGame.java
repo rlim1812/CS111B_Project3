@@ -4,6 +4,7 @@
  * Fiona Gallagher
  * Marion Gallagher
  */
+
 package Project3;
 import java.util.Random;
 
@@ -127,4 +128,5 @@ public class RPSGame {
 	public String toString(){
 		return ("Computer Wins: "+cpuWins+"\nUser Wins: "+userWins+"\nTies: "+ties);
 	}
+	
 }
