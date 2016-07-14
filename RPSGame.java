@@ -78,8 +78,10 @@ public class RPSGame {
 	public int generateComputerPlay(){
 		Random generator = new Random();
 		//generate a random int to represent the computer's move and then return its value
-		return generator.nextInt(3) + 1;
+		int aiMove = generator.nextInt(3) + 1;
+		return aiMove;
 	}
+
 	
 	//find the winner
 	public void findWinner(int cpuMove, int userMove){
