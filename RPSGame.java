@@ -1,10 +1,5 @@
-/*
- * Ryan Lim
- * Jill Huang
- * Fiona Gallagher
- * Marion Gallagher
- */
-
+//Programmed by: Ryan Lim, Jill Huang, Ethan <I don't know his last name>,
+//and (debatably) Marion Fiona Gallagher.
 package Project3;
 import java.util.*;
 
@@ -23,28 +18,18 @@ public class RPSGame {
 	static final int UserWon = 20;
 	static final int Tie = 30;
 	
-	/*
-	 * constructor 
-	 * the game starts off with a blank state,
-	 * there are no initial cpuWins, userWins, or ties
-     */
-	
+//Constructor-- the game starts off in a blank state, with no initial cpuWins, userWins, or ties.
 	public RPSGame(){
 		cpuWins = 0;
 		userWins = 0;
 		ties = 0;
 	}
 	
-	/*
-	 * setters and getters 
-	 * 
-	 * Since this class does not
-	 * interact with the user,
-	 * the GUI class will take care
-	 * of validity checking
-	 * 
-	 */
-	
+/*
+Setters and Getters 
+Since this class doesn't interact with the user, the GUI class will take care of validity checking.
+*/
+//(setters)
 	public void setCpuWins(int newNumCpuWins){
 		cpuWins = newNumCpuWins;
 	}
@@ -54,7 +39,7 @@ public class RPSGame {
 	public void setTies(int newNumTies){
 		ties = newNumTies;
 	}
-	
+//(getters)
 	public int getCpuWins(){
 		return cpuWins;
 	}
@@ -67,23 +52,18 @@ public class RPSGame {
 	public int getWhoWon() {
 		return whoWon;
 	}
-	
-	/*
-	 * generate a random move by the computer
-	 * 1 - Rock
-	 * 2 - Paper
-	 * 3 - Scissors
-	 */
-	
+
+//Method to generate a random move by the computer-- with
+//1 == Rock, 2 == Paper, and 3 == Scissors.
 	public int generateComputerPlay(){
 		Random generator = new Random();
 		//generate a random int to represent the computer's move and then return its value
 		return generator.nextInt(3) + 1;
 	}
 	
-	//find the winner
+//Method to figure out whether the computer or the user won
 	public void findWinner(int cpuMove, int userMove){
-		//match ups
+		//matchups for ROCK
 		if (cpuMove == Rock) {
 			if (userMove == Rock){
 				ties++;
@@ -97,6 +77,7 @@ public class RPSGame {
 				cpuWins++;
 				whoWon = CpuWon;
 			}
+		//matchups for PAPER
 		} else if (cpuMove == Paper) {
 			if (userMove == Rock) {
 				cpuWins++;
@@ -110,6 +91,7 @@ public class RPSGame {
 				userWins++;
 				whoWon = UserWon;
 			}
+		//matchups for SCISSORS
 		} else if (cpuMove == Scissors) {
 			if (userMove == Rock) {
 				userWins++;
@@ -124,7 +106,9 @@ public class RPSGame {
 			}
 		}
 	}
-	
+
+//method to print to the consol the number of wins for the computer
+//and the user, plus the number of ties.
 	public String toString(){
 		return ("Computer Wins: "+cpuWins+"\nUser Wins: "+userWins+"\nTies: "+ties);
 	}
