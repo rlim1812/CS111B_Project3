@@ -30,7 +30,8 @@ public class RPSGame {
 	 * there are no initial cpuWins, userWins, or ties
      */
 	
-	public RPSGame(){
+	public RPSGame(double bet){
+		betAmount = bet;
 		cpuWins = 0;
 		userWins = 0;
 		ties = 0;
@@ -101,6 +102,7 @@ public class RPSGame {
 		if(cpuMove == userMove)
 		{
 			ties++;
+            message = "It's a tie!";
 		}
 		else
 		{
@@ -110,11 +112,13 @@ public class RPSGame {
 				if(userMove == Paper)
 				{
 					userWins++;
+                    message = "Paper smothers Rock! You win!";
 					balance = balance + betAmount;
 				}
 				else if(userMove == Scissors)
 				{
 					cpuWins++;
+                    message = "Rock smashes Scissors! You lose!";
 					balance = balance - betAmount;
 				}
 			} else if(cpuMove == Paper)
@@ -123,11 +127,13 @@ public class RPSGame {
 					if(userMove == Rock)
 					{
 						cpuWins++;
+                        message = "Paper smothers Rock! You lose!";
 						balance = balance - betAmount;
 					}
 					else if(userMove == Scissors)
 					{
 						userWins++;
+                        message = "Scissors shred Paper! You win!";
 						balance = balance + betAmount;
 					}
 				
@@ -135,17 +141,18 @@ public class RPSGame {
 				if(userMove == Rock)
 				{
 					userWins++;
+                    message = "Rock Smashes Scissors! You win!";
 					balance = balance + betAmount;
 				}
 				else if(userMove == Paper)
 				{
 					cpuWins++;
+                    message = "Scissors shred Paper! You lose!";
 					balance = balance - betAmount;
 				}
 			}
 		}
-	//	System.out.println(toString());
-		message = "Whatever";
+
 		return message;
 		
 	}
