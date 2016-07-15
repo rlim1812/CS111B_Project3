@@ -139,13 +139,21 @@ public class RPSGUIGame extends JFrame {
 			{
 				compPlay.setIcon(scissorsImage);
 			}
+		
+			outcome.setText(game.findWinner(user_move , comp_move));
 			// Winning or losing message
 			//outcome.setText(game.findWinner(user_move, comp_move));
-			
+			//outcome.setText(game.toString());
+			//statusC.setText(game.toString());
 			statusC.setText("Computer Wins: " + game.getCpuWins());
 			statusU.setText("User Wins: " + game.getUserWins());
 			statusT.setText("Ties: " + game.getTies());
 			
+		}
+
+		private String findWinner(int user_move, int comp_move) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 		

@@ -5,7 +5,7 @@
  * Marion Gallagher
  */
 
-package Project3;
+
 import java.util.*;
 
 public class RPSGame {
@@ -82,47 +82,56 @@ public class RPSGame {
 	}
 	
 	//find the winner
-	public void findWinner(int cpuMove, int userMove){
+	public String findWinner(int cpuMove, int userMove){
 		//match ups
-		if (cpuMove == Rock) {
-			if (userMove == Rock){
-				ties++;
-				whoWon = Tie;
+		String message = null;
+		if(cpuMove == userMove)
+		{
+			ties++;
+		}
+		else
+		{
+			
+			if(cpuMove == Rock)
+			{
+				if(userMove == Paper)
+				{
+					userWins++;
+				}
+				else if(userMove == Scissors)
+				{
+					cpuWins++;
+				}
 			}
-			else if (userMove == Paper){
-				userWins++;
-				whoWon = UserWon;
+			if(cpuMove == Paper)
+			{
+				
+					if(userMove == Rock)
+					{
+						cpuWins++;
+					}
+					else if(userMove == Scissors)
+					{
+						userWins++;
+					}
+				
 			}
-			else if (userMove == Scissors) {
-				cpuWins++;
-				whoWon = CpuWon;
-			}
-		} else if (cpuMove == Paper) {
-			if (userMove == Rock) {
-				cpuWins++;
-				whoWon = CpuWon;
-			}
-			else if (userMove == Paper){
-				ties++;
-				whoWon = Tie;
-			}
-			else if (userMove == Scissors) {
-				userWins++;
-				whoWon = UserWon;
-			}
-		} else if (cpuMove == Scissors) {
-			if (userMove == Rock) {
-				userWins++;
-				whoWon = UserWon;
-			}
-			else if (userMove == Paper) {
-				cpuWins++;
-				whoWon = CpuWon;
-			} else if (userMove == Scissors) {
-				ties++;
-				whoWon = Tie;
+			if(cpuMove == Scissors)
+			{
+				if(userMove == Rock)
+				{
+					userWins++;
+				}
+				else if(userMove == Paper)
+				{
+					cpuWins++;
+				}
 			}
 		}
+	//	System.out.println(toString());
+		message = "Whatever";
+		return message;
+		
 	}
 	
 	public String toString(){
