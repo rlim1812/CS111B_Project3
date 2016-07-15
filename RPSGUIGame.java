@@ -15,6 +15,9 @@ public class RPSGUIGame extends JFrame {
 	private ImageIcon paperImage, scissorsImage, rockImage;
 	private JLabel compPlay, userPlay;
 	private JLabel outcome;
+	private JLabel showBalance;
+	//private int balance;
+	private static double userBet;
 	// the game object
 	private RPSGame game;
 
@@ -22,7 +25,7 @@ public class RPSGUIGame extends JFrame {
 
 		// initializes the window
 		super("Rock, Paper, Scissors, Go!");
-		setSize(450, 400);
+		setSize(400, 300);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		contentPane.setBackground(Color.black);
@@ -30,7 +33,7 @@ public class RPSGUIGame extends JFrame {
 
 		// creates the game object
 		// 	NOTE: IF COMPLETING THE EXTRA CREDIT, YOU WILL NEED TO ADD A PARAMETER TO REPRESENT THE BET AMOUNT
-		game = new RPSGame();
+		game = new RPSGame(userBet);
 
 
 		// creates the labels for displaying the computer and user's move;
@@ -68,14 +71,18 @@ public class RPSGUIGame extends JFrame {
 		statusC = new JLabel("Computer Wins: " + game.getCpuWins());
 		statusU = new JLabel("User Wins: " + game.getUserWins());
 		statusT = new JLabel("Ties: " + game.getTies());
+		showBalance = new JLabel("Balance: " + game.getBalance());
+		showBalance.setForeground(Color.gray);
 		statusC.setForeground(Color.white);
 		statusU.setForeground(Color.white);
 		statusT.setForeground(Color.white);
+		
 		JPanel statusPanel = new JPanel();
 		statusPanel.setBackground(Color.black);
 		statusPanel.add(statusC);
 		statusPanel.add(statusU);
 		statusPanel.add(statusT);
+		statusPanel.add(showBalance);
 
 		// the play and status panels are nested in a single panel
 		JPanel gamePanel = new JPanel();
@@ -148,21 +155,36 @@ public class RPSGUIGame extends JFrame {
 			statusC.setText("Computer Wins: " + game.getCpuWins());
 			statusU.setText("User Wins: " + game.getUserWins());
 			statusT.setText("Ties: " + game.getTies());
+			showBalance.setText("Balance: " + game.getBalance());
 			
 		}
-
-		private String findWinner(int user_move, int comp_move) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		
 	}
 
 	
 	public static void main(String args[]) {
 		// create an object of your class
-		RPSGUIGame frame = new RPSGUIGame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		boolean playBet = true;
+			int userChoice = JOptionPane.showConfirmDialog(null, "You wanna bet?");
+			if(userChoice == JOptionPane.YES_OPTION)
+			{
+				playBet = true;
+				String userStringBet = JOptionPane.showInputDialog(null, "Enter the bet amount");
+				userBet = Double.parseDouble(userStringBet);
+			}
+			else {
+				playBet = false;
+			} 
+			
+			
+			
+			RPSGUIGame frame = new RPSGUIGame();
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+	
+		
+		
+		
+		
+		
 	}
 }
