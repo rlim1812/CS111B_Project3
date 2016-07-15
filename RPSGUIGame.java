@@ -1,3 +1,12 @@
+/*
+ * Ryan Lim
+ * Kyaw Tun
+ * Jill Huang
+ * Marion Fiona Gallagher
+ *
+ */
+
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
