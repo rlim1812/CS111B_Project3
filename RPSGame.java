@@ -2,9 +2,8 @@
  * Ryan Lim
  * Jill Huang
  * Fiona Gallagher
- * Marion Gallagher
+ * Kyaw Tun
  */
-
 
 import java.util.*;
 
@@ -14,6 +13,8 @@ public class RPSGame {
 	private int userWins;
 	private int ties;
 	private int whoWon;
+	private double betAmount;
+	private double balance;
 	
 	//constants to represent moves
 	static final int Rock = 1;
@@ -54,6 +55,12 @@ public class RPSGame {
 	public void setTies(int newNumTies){
 		ties = newNumTies;
 	}
+	public void setBetAmount (double newBetAmount){
+		betAmount = newBetAmount;
+	}
+	public void setBalance (double newBalance){
+		balance = newBalance;
+	}
 	
 	public int getCpuWins(){
 		return cpuWins;
@@ -66,6 +73,12 @@ public class RPSGame {
 	}
 	public int getWhoWon() {
 		return whoWon;
+	}
+	public double getBetAmount() {
+		return betAmount;
+	}
+	public double getBalance() {
+		return balance;
 	}
 	
 	/*
@@ -97,34 +110,37 @@ public class RPSGame {
 				if(userMove == Paper)
 				{
 					userWins++;
+					balance = balance + betAmount;
 				}
 				else if(userMove == Scissors)
 				{
 					cpuWins++;
+					balance = balance - betAmount;
 				}
-			}
-			if(cpuMove == Paper)
+			} else if(cpuMove == Paper)
 			{
 				
 					if(userMove == Rock)
 					{
 						cpuWins++;
+						balance = balance - betAmount;
 					}
 					else if(userMove == Scissors)
 					{
 						userWins++;
+						balance = balance + betAmount;
 					}
 				
-			}
-			if(cpuMove == Scissors)
-			{
+			} else if (cpuMove == Scissors)	{
 				if(userMove == Rock)
 				{
 					userWins++;
+					balance = balance + betAmount;
 				}
 				else if(userMove == Paper)
 				{
 					cpuWins++;
+					balance = balance - betAmount;
 				}
 			}
 		}
@@ -139,3 +155,4 @@ public class RPSGame {
 	}
 	
 }
+ 
