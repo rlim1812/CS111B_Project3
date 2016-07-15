@@ -58,8 +58,10 @@ Since this class doesn't interact with the user, the GUI class will take care of
 	public int generateComputerPlay(){
 		Random generator = new Random();
 		//generate a random int to represent the computer's move and then return its value
-		return generator.nextInt(3) + 1;
+		int aiMove = generator.nextInt(3) + 1;
+		return aiMove;
 	}
+
 	
 //Method to figure out whether the computer or the user won
 	public void findWinner(int cpuMove, int userMove){
