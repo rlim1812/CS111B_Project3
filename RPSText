@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class RPSText {
+
+	public static void printInstructions() {
+		System.out.println("Main menu-- to play, type 1, 2, or 3 for rock, paper,\n\tand scissors respectively.");
+		System.out.println("\tWhen you want to quit, type 0.");
+		System.out.println("\tTo see the current score, type 4.");
+	}
+	
+	public static int getUserMove() {
+		String rock = " play rock, (1) ";
+		String fold = " paper, (2) ";
+		String snip = " scissors? (3) ";
+		int userMove;
+		
+		Scanner input = new Scanner(System.in);
+		System.out.print("\nWill you");
+		System.out.println(rock + fold + "or" + snip);
+		userMove = input.nextInt();
+		
+		return userMove;
+	}
+	
+	public static void main(String[] args) {
+		RPSGame gamePlay = new RPSGame(9001);
+		boolean runGame = true;
+		
+		printInstructions();
+		while (runGame) {
+			String whoWon = "";
+			int userMove = getUserMove();
+			int compMove = gamePlay.generateComputerPlay();
+			if (userMove == 0) {
+				System.out.println("Thanks for playing!");
+				runGame = false;
+			} else if ((userMove > 0) && (userMove < 4)) {
+				whoWon = gamePlay.findWinner(compMove, userMove); 
+				System.out.print(whoWon);
+			} else if (userMove == 4){
+				String score = gamePlay.toString();
+				System.out.println("The current score is as follows.");
+				System.out.println(score);
+			}
+		}
+	}
+}
